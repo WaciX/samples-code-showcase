@@ -1,0 +1,35 @@
+image: openjdk:11-jdk-slim
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+stages:
+  - build
+  - test
+  - package
+
+build:
+  stage: build
+  script: ./gradlew build -x test
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
+
+test:
+  stage: test
+  script: ./gradlew test
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
+
+docker:
+  stage: package
+  image: docker:latest
+  script:
+    - docker build maciejspublicprojects/get-quote-for-loan-on-36-months-period .
