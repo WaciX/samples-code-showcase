@@ -1,6 +1,8 @@
 # samples-code-showcase
 Maciej Zieniuk sample codes showcase.
 
+LinkedIn: https://www.linkedin.com/in/maciej-zieniuk/
+
 Note that all of the code samples are not fully complete, but they all come through real life projects, both professional and from personal space.
 
 ## Projects and files:
